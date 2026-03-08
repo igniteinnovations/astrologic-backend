@@ -23,8 +23,11 @@ import {
   deleteSatTips,
   updateSatTips,
 } from "../controllers/sat.controller.js";
+import { loginAdmin } from "../controllers/admin.controller.js";
 
 const router = express.Router();
+//login
+router.post("/login", loginAdmin);
 //blog
 router.post("/create", createBlog);
 router.get("/", getBlogs);
