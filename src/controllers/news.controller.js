@@ -43,3 +43,42 @@ export const getNews = async (req, res) => {
     });
   }
 };
+//update
+export const updateNews = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const news = await News.findByIdAndUpdate(id, req.body, {
+      returnDocument: "after",
+    });
+
+    res.json({
+      success: true,
+      message: "News updated successfully",
+      data: news,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+//delete
+export const deleteNews = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    await News.findByIdAndDelete(id);
+
+    res.json({
+      success: true,
+      message: "News deleted successfully",
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};

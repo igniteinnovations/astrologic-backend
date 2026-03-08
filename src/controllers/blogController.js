@@ -42,3 +42,41 @@ export const getBlogs = async (req, res) => {
     });
   }
 };
+//update
+export const updateBlog = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const blog = await Blog.findByIdAndUpdate(id, req.body, { new: true });
+
+    res.json({
+      success: true,
+      message: "Blog updated successfully",
+      data: blog,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+//delete
+
+export const deleteBlog = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    await Blog.findByIdAndDelete(id);
+
+    res.json({
+      success: true,
+      message: "Blog deleted successfully",
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};

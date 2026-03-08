@@ -45,3 +45,45 @@ export const getCategories = async (req, res) => {
     });
   }
 };
+//update
+export const updateCategory = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { name } = req.body;
+
+    const category = await BlogCategory.findByIdAndUpdate(
+      id,
+      { name },
+      { returnDocument: "after" },
+    );
+
+    res.json({
+      success: true,
+      message: "Category updated successfully",
+      data: category,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+//delete
+export const deleteCategory = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    await BlogCategory.findByIdAndDelete(id);
+
+    res.json({
+      success: true,
+      message: "Category deleted successfully",
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
