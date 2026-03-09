@@ -23,6 +23,16 @@ import {
   deleteSatTips,
   updateSatTips,
 } from "../controllers/sat.controller.js";
+import {
+  addService,
+  getServices,
+  updateService,
+  deleteService,
+} from "../controllers/serviceController.js";
+import {
+  bookConsultation,
+  getConsultations,
+} from "../controllers/consultationController.js";
 import { loginAdmin } from "../controllers/admin.controller.js";
 
 const router = express.Router();
@@ -49,5 +59,13 @@ router.post("/sat/create", createSatTips);
 router.get("/sat", getSatTips);
 router.put("/satupdate/:id", updateSatTips);
 router.delete("/satdelete/:id", deleteSatTips);
+//service
+router.post("/service/create", addService);
+router.get("/service", getServices);
+router.put("/serviceupdate/:id", updateService);
+router.delete("/servicedelete/:id", deleteService);
+//book consultation
+router.post("/book", bookConsultation);
+router.get("/getconsultation", getConsultations);
 
 export default router;

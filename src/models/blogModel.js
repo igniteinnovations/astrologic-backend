@@ -19,12 +19,25 @@ const blogSchema = new mongoose.Schema(
 
     content: {
       type: String,
-      required: true,
     },
 
     author: {
       type: String,
       required: true,
+    },
+
+    type: {
+      type: String,
+      enum: ["ARTICLE", "VIDEO"],
+      default: "ARTICLE",
+    },
+
+    videoUrl: {
+      type: String,
+    },
+
+    thumbnail: {
+      type: String,
     },
 
     status: {
