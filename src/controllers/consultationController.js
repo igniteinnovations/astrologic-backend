@@ -3,6 +3,7 @@ import Consultation from "../models/consultationModel.js";
 // USER BOOK CONSULTATION
 export const bookConsultation = async (req, res) => {
   try {
+    console.log("BODY:", req.body);
     const { name, gender, contact, email, service, message } = req.body;
 
     const consultation = await Consultation.create({
