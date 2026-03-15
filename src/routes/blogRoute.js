@@ -30,6 +30,14 @@ import {
   deleteService,
 } from "../controllers/serviceController.js";
 import {
+  createImage,
+  getImages,
+  getImageById,
+  updateImage,
+  deleteImage,
+} from "../controllers/image.controller.js";
+import upload from "../middleware/upload.middleware.js";
+import {
   bookConsultation,
   getConsultations,
 } from "../controllers/consultationController.js";
@@ -67,5 +75,11 @@ router.delete("/servicedelete/:id", deleteService);
 //book consultation
 router.post("/book", bookConsultation);
 router.get("/getconsultation", getConsultations);
+//upload image
+router.post("/image/create", upload.single("image"), createImage);
+router.get("/getallimages", getImages);
+router.get("/getimage/:id", getImageById);
+router.put("updateimage/:id", upload.single("image"), updateImage);
+router.delete("deleteimage/:id", deleteImage);
 
 export default router;
