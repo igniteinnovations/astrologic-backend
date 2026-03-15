@@ -79,7 +79,7 @@ router.get("/getconsultation", getConsultations);
 router.post("/image/create", upload.single("image"), createImage);
 router.get("/getallimages", getImages);
 router.get("/getimage/:id", getImageById);
-router.put("updateimage/:id", upload.single("image"), updateImage);
-router.delete("deleteimage/:id", deleteImage);
+router.put("/updateimage/:id", upload.single("image"), updateImage);
+router.delete("/deleteimage/:id", deleteImage);
 
 export default router;
